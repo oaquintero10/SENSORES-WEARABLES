@@ -15,5 +15,4 @@ En esta gráfica se puede evidenciar que el pulso de la persona es algo irregula
 
 <Embed src = "grafica2.html" width = "1000" height = "650">
 
-En este análisis se excluye el tiempo que la persona dura en la casa, este representa un tiempo muy superior al resto de actividades ya que incluye las horas de sueño, lo que en promedio de la persona es 8 a 9 horas diarias.
-Como se puede evidenciar el mayor tiempo lo destina a trabajar en el computador y muy poco tiempo a hacer ejercicio.
+En este análisis se excluye el tiempo que la persona permanece en la casa, debido a que respresenta  tiempo mayor al  resto de actividades ya que incluye horas de sueño, lo que en promedio por persona persona es de 8 a 9 horas diarias. Como se puede evidenciar el mayor tiempo se destina a trabajar en el computador y poco tiempo a relizar actividades deportivas.
