@@ -1,3 +1,43 @@
+ <!--Code review - Arturo Polo
+ Omar podría agregar los siguientes metadatos para facilitar la ubicación e identificación de su página.
+ <!DOCTYPE html>
+ <html lang="es">
+   <head>
+      <meta charset="utf-8">   
+      <title>Sensores Wearables</title>
+      <meta name="description" content="Sensores Wearables">
+      <meta name="keywords" content="Sensores, Wearables, Pulso, Frecuencia card&iacute;aca">
+  
+      <script src="https://d3js.org/d3.v3.js"></script>
+      <style>
+
+          svg {
+            font: 10px sans-serif;
+          }
+
+          .axis path,
+          .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+          }
+
+          .x.axis path {
+            fill:none;
+            stroke:#000;
+            shape-rendering: crispEdges;
+          }
+
+          .line {
+            fill: none;
+            stroke-width: 1px;
+          }
+
+      </style>
+
+    </head>
+ -->
+
 <style>
 
 svg {
@@ -65,6 +105,10 @@ var svg = d3.select("body").append("svg")
 
 d3.csv("merged.csv", function(error, data) {
 
+    /*Code review - Arturo Polo
+     Esto mismo lo puedes hacer con el siguiente código:
+     color.domain(d3.range(0, 12));
+     */
      color.domain([0,1,2,3,4,5,6,7,8,9,10,11,12]);
 
   data = data.map( function (d) {
@@ -98,14 +142,21 @@ console.log(data)
     .attr("transform","rotate(90)")
     .text("Heart Rate (BPM)")
 
- svg.append("path")
+  /*Code review - Arturo Polo
+   En este punto hubiera sido recomendable usar una lìnea punteada de un color en específico, por ejemplo LightBlue, para representar 
+   los límites superior e inferior del rango de funcionamiento cardíaco óptimo. Esto se podría implementar con el siguiente código:
+      
+      .style("stroke-dasharray", ("3, 3"))
+      .style("stroke", "LightBlue")
+   */
+  svg.append("path")
      .attr("d", function(d) { return "M 0," + y(130) + ", L " + width + "," + y(130); })
      .attr("clip-path", "url(#rect-clip)")
      .style("stroke", "#000")
      .style("fill","none")
      .style("stroke-width", 2);
 
- svg.append("path")
+  svg.append("path")
      .attr("d", function(d) { return "M 0," + y(50) + ", L " + width + "," + y(50); })
      .attr("clip-path", "url(#rect-clip)")
      .style("stroke", "#000")
@@ -148,7 +199,13 @@ console.log(data)
         .style("stroke-width", 5)
         .style("stroke-opacity", 1);
 
-        d3.selectAll(".linetext" + this.parentNode.id)
+        /*Code review - Arturo Polo
+         Para corregir el error que esta apareciendo al colocar el Mouse sobre cada una de las lìneas debes reemplazar la siguiente lìnea de código:
+          d3.selectAll(".linetext" + this.parentNode.id)
+         Por este:
+          d3.selectAll(".linetext" + this.id)  
+        */
+        d3.selectAll(".linetext" + this.
         .style("fill","#000");
 
       })
@@ -161,6 +218,12 @@ console.log(data)
         .style("stroke-width", 1)
         .style("stroke-opacity", .2);
 
+        /*Code review - Arturo Polo
+         Para corregir el error que esta apareciendo al colocar el Mouse sobre cada una de las lìneas debes reemplazar la siguiente lìnea de código:
+          d3.selectAll(".linetext" + this.parentNode.id)
+         Por este:
+          d3.selectAll(".linetext" + this.id)  
+        */
         d3.selectAll(".linetext" + this.parentNode.id)
         .style("fill","none");
 
