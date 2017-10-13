@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+
+<!--Code review - Arturo Polo
+Omar podría agregar los siguientes metadatos para facilitar la ubicación e identificación de su página.
+<title>Sensores Wearables</title>
+<meta name="description" content="Sensores Wearables">
+<meta name="keywords" content="Sensores, Wearables, Pulso, Frecuencia card&iacute;aca">
+-->
+
 <style>
 body2 {
   font: 10px sans-serif;
@@ -72,6 +80,9 @@ d3.csv("data.csv", function(error, data) {
           .style("fill", function (d) { return color(d.name); })
           .attr("d", arc);
 
+  /*Code review - Arturo Polo
+  Muy bien implementada esta transición resaltando completamente la visualización.
+  */
   segments.transition().ease("elastic").duration(1000).delay(function(d,i) {return (25-i)*100;})
           .attrTween("d", function(d,index) {
             var i = d3.interpolate(d.outerRadius, barScale(+d.value));
@@ -98,6 +109,11 @@ d3.csv("data.csv", function(error, data) {
     //.call(xAxis);
 
   // Labels
+  /*Code review - Arturo Polo
+  Además de los LABELS externos, me parece que hubiera sido conveniente agregar LABELS sobre los círculos internos para permitir 
+  identificar la magnitud de los valores de cada una de las categorías. Inclusive una buena idea hubiera sido colocar una tabla 
+  que acompañará la gráfica con los valores de cada una de las categorías.
+  */
   var labelRadius = barHeight * 1.025;
 
   var labels = svg.append("g")
